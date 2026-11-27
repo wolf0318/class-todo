@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<meta name="board-mode" content="static">
+<meta name="robots" content="noindex, nofollow">
+<title>우리 반 책 할 일</title>
+<link rel="stylesheet" href="./fonts/pretendard/pretendard.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body class="board-page" translate="no">
+<header class="top">
+  <div class="title">
+    <h1 id="title">우리 반 책 할 일</h1>
+    <p class="sub" id="className"></p>
+  </div>
+  <ol class="steps" aria-label="하는 순서">
+    <li class="st-jajak"><b>1</b> 자작자작<span>글 쓰기</span></li>
+    <li class="arrow" aria-hidden="true">→</li>
+    <li class="st-canva"><b>2</b> 캔바<span>그림 그리기</span></li>
+    <li class="arrow" aria-hidden="true">→</li>
+    <li class="st-record"><b>3</b> 북크리에이터<span id="recStep">녹음하기</span></li>
+  </ol>
+  <div class="refresh">
+    <button id="refreshBtn" type="button">갱신</button>
+    <p id="updatedAt" class="when">아직 갱신 전</p>
+  </div>
+</header>
+
+<div id="notice" class="notice" hidden></div>
+
+<main>
+  <div id="grid" class="grid" aria-live="polite"></div>
+</main>
+
+<footer class="bottom">
+  <p id="counts" class="counts"></p>
+  <a id="teacherLink" class="teacher-link" href="./teacher">선생님 설정</a>
+  <button id="forgetBtn" class="teacher-link forget" type="button" hidden>이 컴퓨터에서 암호 지우기</button>
+</footer>
+
+<div id="lock" class="overlay lock" hidden>
+  <form id="lockForm" class="lock-card">
+    <h2>할일판 암호</h2>
+    <p class="lock-help">선생님이 정한 암호를 넣어 주세요. 이 컴퓨터는 암호를 기억해서 다음부터는 묻지 않아요.</p>
+    <input id="lockPass" type="password" autocomplete="current-password" aria-label="할일판 암호" required>
+    <p id="lockMsg" class="lock-msg" role="alert"></p>
+    <button id="lockBtn" type="submit">열기</button>
+  </form>
+</div>
+
+<div id="detail" class="overlay" hidden>
+  <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <header class="sheet-head">
+      <h2 id="dTitle"></h2>
+      <button id="closeBtn" class="close" type="button" aria-label="닫기">닫기</button>
+    </header>
+    <div class="sheet-body">
+      <div class="todo">
+        <h3>지금 할 일</h3>
+        <ol id="dTasks" class="tasks"></ol>
+        <ul id="dWaits" class="waits"></ul>
+      </div>
+      <div class="chap">
+        <h3>장별로 보기</h3>
+        <table class="chap-table">
+          <thead><tr><th scope="col">장</th><th scope="col">글</th><th scope="col">그림</th><th scope="col">녹음</th></tr></thead>
+          <tbody id="dRows"></tbody>
+        </table>
+        <p class="legend"><span class="mk mk-done">끝</span> <span class="mk mk-now">지금</span> <span class="mk mk-wait">기다림</span> <span class="mk mk-later">나중에</span></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>
